@@ -36,7 +36,7 @@
 
 .progress-ring__circle {
   stroke-dasharray: 10 20;
-  transition: 0.35s stroke-dashoffset;
+  transition: 1.2s stroke-dashoffset;
   transform: rotate(-90deg);
   transform-origin: 50% 50%
 }
@@ -55,18 +55,25 @@
 	margin-top: 1%;
 	font-weight: 500;
 	font-size: 11px;
-	background-color: #777AE5;
-	color: white;
+	background-color: white;
+	color: black;
+	transition: all 0.4s ease;
 }
 
 .timeFrame:hover {
-	box-shadow: 2px 2px 4px #969494;
-	transition: .3s box-shadow;
+	background-color: #777AE5;
+	box-shadow: 1px 1px 2px #969494;
+	color: white;
+	cursor: pointer;
 }
 
 .timeFrame:active {
 	box-shadow: inset 0px 0px 15px #969494;
-	transition: .3s box-shadow;
+}
+
+.timeFrame.active {
+	background-color: #777AE5;
+	color: white;
 }
 
 #daily {

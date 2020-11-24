@@ -15,11 +15,11 @@
 					<g>
 						<circle class="bottom__circle" stroke='#EEEEEE' stroke-width="2" fill='transparent' r="98" cx="187" cy="112" />
 						<circle class="progress-ring__circle" stroke='#14CF66' stroke-width="4" fill='transparent' r="98" cx="187" cy="112"/>
-						<text x='155' y='120' font-size='38' font-weight='550'>75%</text>
+						<text id='progressText' x='155' y='120' font-size='38' font-weight='550'>75%</text>
 						<text x='165' y='140' font-size='12' fill='#545454'>TO GOAL</text>
 					</g>
 				</svg>
-				<button class="timeFrame" id="daily">DAILY</button><button class="timeFrame" id="weekly">WEEKLY</button><button class="timeFrame" id="monthly">MONTHLY</button>
+				<button class="timeFrame active" id="daily">DAILY</button><button class="timeFrame" id="weekly">WEEKLY</button><button class="timeFrame" id="monthly">MONTHLY</button>
 			</div>
 			<div class='tile' id='orderTile'>
 
@@ -58,10 +58,34 @@
 		circle.style.strokeDashoffset = offset;
 	}
 
+	let progressText = document.querySelector('#progressText');
+
 	setProgress(75);
 
 	let dailyButton = document.querySelector('#daily');
 	dailyButton.addEventListener('click', () => {
+		dailyButton.classList = 'timeFrame active';
+		weeklyButton.classList = 'timeFrame';
+		monthlyButton.classList = 'timeFrame';
 		setProgress(15);
+		progressText.textContent = '15%';
+	});
+
+	let weeklyButton = document.querySelector('#weekly');
+	weeklyButton.addEventListener('click', () => {
+		dailyButton.classList = 'timeFrame';
+		weeklyButton.classList = 'timeFrame active';
+		monthlyButton.classList = 'timeFrame';
+		setProgress(50);
+		progressText.textContent = '50%';
+	});
+
+	let monthlyButton = document.querySelector('#monthly');
+	monthlyButton.addEventListener('click', () => {
+		dailyButton.classList = 'timeFrame';
+		weeklyButton.classList = 'timeFrame';
+		monthlyButton.classList = 'timeFrame active';
+		setProgress(75);
+		progressText.textContent = '75%';
 	});
 </script>
