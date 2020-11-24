@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OptionsTracker</title>
+		<link rel='stylesheet' href='public/index.css'>
+		<link rel='stylesheet' href='public/tiles.css'>
+	</head>
+	<body>
+		<header id='header'>
+			<button class='windowButton' id='exitButton'></button><button class='windowButton' id='minimizeButton'></button>
+		</header>
+		<div id='main'>
+			<div class='tile' id='progressTile'>
+				<svg class="progress-ring" height="225" width="380">
+					<g>
+						<circle class="bottom__circle" stroke='#EEEEEE' stroke-width="2" fill='transparent' r="98" cx="187" cy="112" />
+						<circle class="progress-ring__circle" stroke='#14CF66' stroke-width="4" fill='transparent' r="98" cx="187" cy="112"/>
+						<text x='155' y='120' font-size='38' font-weight='550'>75%</text>
+						<text x='165' y='140' font-size='12' fill='#545454'>TO GOAL</text>
+					</g>
+				</svg>
+				<button class="timeFrame" id="daily">DAILY</button><button class="timeFrame" id="weekly">WEEKLY</button><button class="timeFrame" id="monthly">MONTHLY</button>
+			</div>
+			<div class='tile' id='orderTile'>
+
+			</div>
+			<div class='tile' id='chartTile'>
+			
+			</div>
+		</div>
+	</body>
+</html>
+
+<script>
+	let {ipcRenderer} = require('electron');
+
+	let exitButton = document.getElementById('exitButton');
+	exitButton.addEventListener('click', (e) => {
+		e.preventDefault;
+		ipcRenderer.send('exitButton');
+	});
+
+	let minimizeButton = document.getElementById('minimizeButton');
+	minimizeButton.addEventListener('click', (e) => {
+		e.preventDefault;
+		ipcRenderer.send('minimizeButton');
+	});
+
+	var circle = document.querySelector('.progress-ring__circle');
+	var radius = circle.r.baseVal.value;
+	var circumference = radius * 2 * Math.PI;
+
+	circle.style.strokeDasharray = `${circumference} ${circumference}`;
+	circle.style.strokeDashoffset = `${circumference}`;
+
+	function setProgress(percent) {
+		const offset = circumference - percent / 100 * circumference;
+		circle.style.strokeDashoffset = offset;
+	}
+
+	setProgress(75);
+
+	let dailyButton = document.querySelector('#daily');
+	dailyButton.addEventListener('click', () => {
+		setProgress(15);
+	});
+</script>
