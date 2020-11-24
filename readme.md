@@ -1,0 +1,1 @@
+This program is designed to help you keep track of your options trades and plans to support keeping track of profits and overall portfolio value based on trading call and put options.
