@@ -14,26 +14,6 @@
 	font-size: 12px;
 }
 
-#chartTile {
-	float: left;
-	width: 380px;
-	height: 271px;
-	background-color: white;
-	border-radius: 5px;
-	margin-left: 5px;
-	margin-top: 54px;
-}
-
-#orderTile {
-	float: right;
-	width: 405px;
-	height: 550px;
-	background-color: white;
-	border-radius: 5px;
-	margin-top: 5px;
-	margin-right: 5px;
-}
-
 .progress-ring__circle {
   stroke-dasharray: 10 20;
   transition: 1.2s stroke-dashoffset;
@@ -67,10 +47,6 @@
 	cursor: pointer;
 }
 
-.timeFrame:active {
-	box-shadow: inset 0px 0px 15px #969494;
-}
-
 .timeFrame.active {
 	background-color: #777AE5;
 	color: white;
@@ -78,4 +54,48 @@
 
 #daily {
 	margin-left: 27%;
+}
+
+#chartTile {
+	float: left;
+	width: 380px;
+	height: 271px;
+	background-color: white;
+	border-radius: 5px;
+	margin-left: 5px;
+	margin-top: 54px;	
+}
+
+#chartTile p {
+	color: #545454;
+	font-size: 12px;
+	font-weight: 500;
+	display: inline-block;
+	margin-left: 10%;
+	margin-right: 100%;
+	margin-top: 5%;
+}
+
+#chartTile h2 {
+	color: black;
+	font-weight: 550;
+	font-size: 38px;
+	display: inline-block;
+	margin-left: 10%;
+	margin-top: 1%;
+}
+
+#chartTile svg {
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+#orderTile {
+	float: right;
+	width: 405px;
+	height: 550px;
+	background-color: white;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
 }
