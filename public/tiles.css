@@ -63,7 +63,7 @@
 	background-color: white;
 	border-radius: 5px;
 	margin-left: 5px;
-	margin-top: 54px;	
+	margin-top: 54px;
 }
 
 #chartTile p {
@@ -88,6 +88,7 @@
 #chartTile svg {
 	margin-left: 40px;
 	margin-right: 40px;
+	margin-top: 7px;
 }
 
 #orderTile {
@@ -98,4 +99,134 @@
 	border-radius: 5px;
 	margin-top: 5px;
 	margin-right: 5px;
+}
+
+.tabButtons {
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	border: none;
+	background-color: white;
+	border-radius: 5px;
+	padding: 2%;
+	cursor: pointer;
+	transition: all 0.4s ease;
+}
+
+.tabButtons.active {
+	background-color: #777AE5;
+	color: white;
+}
+
+.tabButtons:hover {
+	background-color: #777AE5;
+	color: white;
+}
+
+#calendarTab {
+	margin-left: 3%;
+}
+
+#orderTile select {
+	border: 1px solid black;
+	border-radius: 5px;
+	transition: all 0.4s ease;
+	margin-left: 20px;
+	width: 365px;
+	height: 48px;
+	font-size: 15px;
+}
+
+#orderTile select.empty {
+	border: 1px solid #D9D9D9;
+	color: gray;
+}
+
+#strategyLabel {
+	display: flex;
+	margin-left: 20px;
+	margin-top: 25px;
+	font-size: 15px;
+}
+
+#strategy {
+	margin-top: 3%;
+}
+
+#tickerLabel {
+	display: flex;
+	margin-left: 20px;
+	margin-top: 25px;
+	font-size: 15px;
+}
+
+#ticker {
+	margin-top: 3%;
+	margin-left: 20px;
+	width: 360px;
+	height: 48px;
+	border-radius: 5px;
+	border: 1px solid black;
+	font-size: 15px;
+	padding-left: 5px;
+	text-transform: uppercase;
+}
+
+#ticker.empty {
+	border: 1px solid #D9D9D9;
+	color: gray;
+}
+
+#entry, #exit {
+	border-radius: 5px;
+	border: 1px solid black;
+	margin-top: 3%;
+	height: 48px;
+	font-size: 15px;
+	padding-left: 5px;
+	width: 153px;
+}
+
+#entry.empty, #exit.empty {
+	border: 1px solid #D9D9D9;
+	color: gray;
+}
+
+#entryDiv {
+	width: 182.5px;
+	display: inline-block;
+	margin-left: 20px;
+	margin-top: 25px;
+	margin-right: 20px;
+}
+
+#exitDiv {
+	width: 153px;
+	display: inline-block;
+}
+
+#submit, #clear {
+	display: flex;
+	margin-left: 20px;
+	margin-top: 20px;
+	width: 365px;
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid white;
+	cursor: pointer;
+	padding-top: 1.5%;
+	padding-left: 37%;
+	font-size: 15px;
+	background-color: rgb(238, 238, 238);
+	transition: all 0.4s ease;
+}
+
+#submit:hover {
+	background-color: #777AE5;
+	color: white;
+}
+
+#clear:hover {
+	background-color: #FF0F0F;
+	color: white;
 }
