@@ -39,7 +39,7 @@
 				</div>
 				<div id="amountDiv">
 					<label id='amountLabel' for='amount'>AMOUNT</label>
-					<input id='amount' name='amount' placeholder='1' class='empty' value=1>
+					<input id='amount' name='amount' placeholder='1' class='empty'>
 				</div>
 				<div id='entryDiv'>
 					<label id='entryLabel' for='entry'>ENTRY</label>
@@ -55,7 +55,7 @@
 			<div class='tile' id='chartTile'>
 				<p>PROGRESS</p>
 				<h2></h2>
-				<svg height="178.203" width="300">
+				<svg id='lineChart' height="178.203" width="300" xmlns='http://www.w3.org/2000/svg'>
 					<path id='pathGraph' stroke='#14CF66' fill='transparent' stroke-width='3'/>
 					<path id='pathGraph2' stroke='#14CF66' fill='transparent' stroke-width='3'/>
 					<path id='pathGraph3' stroke='#14CF66' fill='transparent' stroke-width='3'/>
@@ -85,6 +85,4 @@
 		e.preventDefault;
 		ipcRenderer.send('minimizeButton');
 	});
-
-	
 </script>

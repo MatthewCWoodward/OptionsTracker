@@ -148,7 +148,7 @@ submitButton.addEventListener('click', () => {
 	exitValue = exit.value;
 	if(openPosition.selectedIndex != 0 && exitValue != '') {
 		status='closed';
-		trades.splice(openPosition.children[openPosition.selectedIndex].getAttribute('id'), 1, { "amount": tradeAmount, "ticker": tickerValue, "strategy": strategyValue, "entry": entryValue, "exit": exitValue, "status": status, "id": openPosition.selectedIndex != 0 ? openPosition.children[openPosition.selectedIndex].getAttribute('id') : tradeCount });
+		trades.splice(openPosition.children[openPosition.selectedIndex].getAttribute('id'), 1, { "amount": tradeAmount, "ticker": tickerValue, "strategy": strategyValue, "entry": entryValue, "exit": exitValue, "status": status, "id": openPosition.children[openPosition.selectedIndex].getAttribute('id') });
 	} else if(exitValue != '') {
 		status = 'closed';
 		trades.push({ "amount": tradeAmount, "ticker": tickerValue, "strategy": strategyValue, 	"entry": entryValue, "exit": exitValue, "status": status, "id": tradeCount });
@@ -198,5 +198,3 @@ clearButton.addEventListener('click', () => {
 	exit.value = '';
 	exit.classList = 'empty';
 })
-
-// Instead of deleting and shifting I can replace values in the trades list
