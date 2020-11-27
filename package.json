@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron": "^11.0.2"
+    "electron": "^11.0.2",
+    "moment": "^2.29.1"
   },
   "devDependencies": {
     "electron-reloader": "^1.0.1"

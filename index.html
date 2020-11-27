@@ -26,16 +26,21 @@
 					<button class='tabButtons active' id="orderTab">ORDER</button><button class='tabButtons' id="calendarTab">CALENDAR</button>
 				</div>
 				<select id='openPositions' class='empty'>
-					<option value="0" selected>OPEN POSITIONS</option>
-					<option value='1'>+1 AAPL 12/25 $150C</option>
+					<option value="">OPEN POSITIONS</option>
 				</select>
 				<label id='strategyLabel' for='strategy'>STRATEGY</label>
 				<select id='strategy' name='strategy' class='empty'>
-					<option value='call'>CALL</option>
-					<option value='put'>PUT</option>
+					<option id='callStrategy' value='call'>CALL</option>
+					<option id='putStrategy' value='put'>PUT</option>
 				</select>
-				<label id='tickerLabel' for='ticker'>TICKER</label>
-				<input id='ticker' name='ticker' placeholder='AAPL' class='empty'>
+				<div id="tickerDiv">
+					<label id='tickerLabel' for='ticker'>TICKER</label>
+					<input id='ticker' name='ticker' placeholder='AAPL 12/25 $150' class='empty'>
+				</div>
+				<div id="amountDiv">
+					<label id='amountLabel' for='amount'>AMOUNT</label>
+					<input id='amount' name='amount' placeholder='1' class='empty' value=1>
+				</div>
 				<div id='entryDiv'>
 					<label id='entryLabel' for='entry'>ENTRY</label>
 					<input id='entry' name='entry' placeholder='1.00' class='empty'>
@@ -80,4 +85,6 @@
 		e.preventDefault;
 		ipcRenderer.send('minimizeButton');
 	});
+
+	
 </script>
