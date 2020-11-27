@@ -27,13 +27,13 @@ for (trade of trades) {
 	}
 }
 openPosition.addEventListener('focus', () => {
-	let updatedTrades = require(app.getPath('userData') + '/trades.json');
+	trades = require(app.getPath('userData') + '/trades.json');
 	openPosition.innerHTML = '';
 	let placehold = document.createElement('OPTION');
 	placehold.setAttribute('value', '');
 	placehold.textContent = 'OPEN POSITIONS';
 	openPosition.appendChild(placehold);
-	for (trade of updatedTrades) {
+	for (trade of trades) {
 		if (trade.status == 'open') {
 			console.log('Found trade');
 			let openTrade = document.createElement('OPTION');
@@ -147,27 +147,27 @@ submitButton.addEventListener('click', () => {
 	entryValue = entry.value;
 	exitValue = exit.value;
 	if(openPosition.selectedIndex != 0 && exitValue != '') {
-		delete trades[openPosition.selectedIndex - 1];
 		status='closed';
+		trades.splice(openPosition.children[openPosition.selectedIndex].getAttribute('id'), 1, { "amount": tradeAmount, "ticker": tickerValue, "strategy": strategyValue, "entry": entryValue, "exit": exitValue, "status": status, "id": openPosition.selectedIndex != 0 ? openPosition.children[openPosition.selectedIndex].getAttribute('id') : tradeCount });
 	} else if(exitValue != '') {
 		status = 'closed';
+		trades.push({ "amount": tradeAmount, "ticker": tickerValue, "strategy": strategyValue, 	"entry": entryValue, "exit": exitValue, "status": status, "id": tradeCount });
 	} else {
 		status = 'open';
+		trades.push({ "amount": tradeAmount, "ticker": tickerValue, "strategy": strategyValue, "entry": entryValue, "exit": exitValue, "status": status, "id": tradeCount });
 	};
 
-	for(trade of trades) {
-		if (trade == 'null') {
-			delete trades[trades.indexOf(trade)];
-		}
+	if(openPosition.selectedIndex == 0) {
+		tradeCount++;
 	}
 
-	trades.push({ "amount": tradeAmount, "ticker": tickerValue, "strategy": strategyValue, "entry": entryValue, "exit": exitValue, "status": status, "id": tradeCount});
 	jsonfile.writeFile(app.getPath('userData') + '/trades.json', trades, (err) => {
 		if (err) {
 			console.log(moment().format('hh:mm:ss:ms') + ': The file could not be written.', err);
 		}
 		console.log(moment().format('hh:mm:ss:ms') + ': Trade has been successfully saved.');
 	});
+
 	openPosition.classList = 'empty';
 	openPosition.selectedIndex = 0;
 	strategy.classList = 'empty';
@@ -179,7 +179,8 @@ submitButton.addEventListener('click', () => {
 	entry.classList = 'empty';
 	exit.value = '';
 	exit.classList = 'empty';
-	tradeCount++;
+
+	trades = require(app.getPath('userData') + '/trades.json');
 })
 
 
@@ -198,8 +199,4 @@ clearButton.addEventListener('click', () => {
 	exit.classList = 'empty';
 })
 
-
-// Trades are getting deleted because I'm using ``delete trades[openPosition.selectedIndex - 1]`` when in reality the index of a trade in trades.json may not be the same as its index in openPositions
-// What to do?
-// I could use ID's on each trade, but how would I prevent different trade entries from occupying the same ID if I start from 0 on each time I open OptionsTracker
-// I could start the ID's from ``trades.length - 1``
+// Instead of deleting and shifting I can replace values in the trades list
