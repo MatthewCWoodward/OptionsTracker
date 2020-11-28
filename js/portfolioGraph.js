@@ -201,5 +201,8 @@ document.querySelector('#submit').addEventListener('click', () => {
 
 		eventListeners();
 		document.querySelector('#chartTile h2').textContent = portfolio[4];
+		let trades = require(remoteApp.getPath('userData') + '/trades.json');
+		trades.splice(0, 1, { "value1": trades[0].value2, "value2": trades[0].value3, "value3": trades[0].value4, "value4": trades[0].value5, "value5": parseInt(document.querySelector('#chartTile h2').textContent) });
+		jsonfile.writeFile(app.getPath('userData') + '/trades.json', trades);
 	}
 })

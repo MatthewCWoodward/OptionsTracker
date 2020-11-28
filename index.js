@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, ipcMain } = require('electron')
+const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 
 let win;
 
@@ -29,7 +29,7 @@ app.on('activate', () => {
 	}
 })
 
-ipcMain.on('exitButton', () => {
+ipcMain.on('exitButton', (e) => {
 	app.quit();
 });
 
