@@ -15,7 +15,7 @@
 					<g>
 						<circle class="bottom__circle" stroke='#EEEEEE' stroke-width="2" fill='transparent' r="98" cx="187" cy="112" />
 						<circle class="progress-ring__circle" stroke='#14CF66' stroke-width="4" fill='transparent' r="98" cx="187" cy="112"/>
-						<text id='progressText' x='155' y='120' font-size='38' font-weight='550'>15%</text>
+						<text id='progressText' x='155' y='120' font-size='38' font-weight='550'></text>
 						<text x='165' y='140' font-size='12' fill='#545454'>TO GOAL</text>
 					</g>
 				</svg>
@@ -77,7 +77,7 @@
 	let exitButton = document.getElementById('exitButton');
 	exitButton.addEventListener('click', (e) => {
 		e.preventDefault;
-		ipcRenderer.send('exitButton');
+		ipcRenderer.send('exitButton', parseInt(document.querySelector('#chartTile h2').textContent));
 	});
 
 	let minimizeButton = document.getElementById('minimizeButton');
