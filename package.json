@@ -5,16 +5,29 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "mattcwoodward",
+    "mac": {
+      "category": "Finance",
+      "target": "dmg",
+      "icon": "./public/diamond.icns"
+    },
+    "productName": "OptionsTracker"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron": "^11.0.2",
+    "jsonfile": "^6.1.0",
     "moment": "^2.29.1"
   },
   "devDependencies": {
+    "electron": "^11.0.3",
+    "electron-builder": "^22.9.1",
     "electron-reloader": "^1.0.1"
   }
 }
