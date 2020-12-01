@@ -8,11 +8,13 @@ let pathGraph4 = document.querySelector('#pathGraph4');
 let pathGraph5 = document.querySelector('#pathGraph5');
 let portfolioData = require(remoteApp.getPath('userData') + '/trades.json');
 let portfolio = [];
-portfolio.push(portfolioData[0].value26);
-portfolio.push(portfolioData[0].value27);
-portfolio.push(portfolioData[0].value28);
-portfolio.push(portfolioData[0].value29);
-portfolio.push(portfolioData[0].value30);
+for(i = 4; i >= 0; i--) {
+	if(portfolioData[0].weeklyValues[portfolioData[0].weeklyValues.length - 1 - i] != undefined) {
+		portfolio.push(portfolioData[0].weeklyValues[portfolioData[0].weeklyValues.length - 1 - i])
+	} else {
+		portfolio.push(0);
+	}
+}
 let portfolioMin = Math.min(...portfolio);
 let portfolioMax = Math.max(...portfolio);
 let portfolioRange = portfolioMax - portfolioMin;
