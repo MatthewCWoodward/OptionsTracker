@@ -33,10 +33,11 @@ app.on('activate', () => {
 
 ipcMain.on('exitButton', (e, ending) => {
 	let trades = require(app.getPath('userData') + '/trades.json');
+	let week = trades[0].weeklyValues;
+	let month = trades[1].monthlyValues;
 	if(moment().format('dddd') == 'Monday') {
-		trades.splice(0, 1, { "weeklyValues": [ending]})
+		trades.splice(0, 1, { "weeklyValues": [week[week.length - 1],ending]})
 	} else {
-		let week = trades[0].weeklyValues;
 		if(week.length == 5) {
 			week.shift();
 		}
@@ -44,9 +45,8 @@ ipcMain.on('exitButton', (e, ending) => {
 		trades.splice(0, 1, { "weeklyValues": week })
 	}
 	if(moment().format('LL').includes(' 1,')) {
-		trades.splice(1, 1, { "monthlyValues": [ending] });
+		trades.splice(1, 1, { "monthlyValues": [month[month.length - 1], ending] });
 	} else {
-		let month = trades[1].monthlyValues;
 		month.push(ending)
 		trades.splice(1, 1, { "monthlyValues": month});
 	}
