@@ -133,8 +133,7 @@ eventListeners();
 document.querySelector('#submit').addEventListener('click', () => {
 	if(document.querySelector('#entry').value != '' && document.querySelector('#exit').value != '') {
 		let newPortfolioValue = portfolio[4] + 100.0 * parseFloat(document.querySelector('#amount').value) * (parseFloat(document.querySelector('#exit').value) - parseFloat(document.querySelector('#entry').value));
-		portfolio.shift();
-		portfolio.push(newPortfolioValue);
+		portfolio.splice(4, 1, newPortfolioValue);
 
 		portfolioMin = Math.min(...portfolio);
 		portfolioMax = Math.max(...portfolio);
