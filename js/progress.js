@@ -44,14 +44,14 @@ document.querySelector('#submit').addEventListener('click', () => {
 		dailyButton.classList = 'timeFrame active';
 		weeklyButton.classList = 'timeFrame';
 		monthlyButton.classList = 'timeFrame';
-	}
 
-	if (dailyValue >= 0) {
-		setProgress(Math.min((dailyValue * 100 / goals[0]), 100));
-		progressText.textContent = `${Math.min(Math.round(dailyValue * 100 / goals[0]), 100)}%`;
-	} else {
-		setProgress(0);
-		progressText.textContent = `0%`;
+		if (dailyValue >= 0) {
+			setProgress(Math.min((dailyValue * 100 / goals[0]), 100));
+			progressText.textContent = `${Math.min(Math.round(dailyValue * 100 / goals[0]), 100)}%`;
+		} else {
+			setProgress(0);
+			progressText.textContent = `0%`;
+		}
 	}
 })
 
