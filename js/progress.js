@@ -33,7 +33,7 @@ if(momentDate().format('LL').includes(' 1,')) {
 progressText.textContent = `${dailyValue * 100 / goals[0]}%`;
 
 document.querySelector('#submit').addEventListener('click', () => {
-	if(document.querySelector('#exit') != '') {
+	if(document.querySelector('#exit').value != '') {
 		dailyValue += 100.0 * parseFloat(document.querySelector('#amount').value) * (parseFloat(document.querySelector('#exit').value) - parseFloat(document.querySelector('#entry').value));
 		console.log(dailyValue);
 
