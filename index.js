@@ -35,21 +35,18 @@ ipcMain.on('exitButton', (e, ending) => {
 	let trades = require(app.getPath('userData') + '/trades.json');
 	let week = trades[0].weeklyValues;
 	let month = trades[1].monthlyValues;
-	if(moment().format('dddd') == 'Monday') {
-		trades.splice(0, 1, { "weeklyValues": [week[week.length - 1],ending]})
-	} else {
-		if(week.length == 5) {
-			week.shift();
-		}
-		week.push(ending);
-		trades.splice(0, 1, { "weeklyValues": week })
+	if (week.length == 5) {
+		week.shift();
 	}
-	if(moment().format('LL').includes(' 1,')) {
-		trades.splice(1, 1, { "monthlyValues": [month[month.length - 1], ending] });
-	} else {
-		month.push(ending)
-		trades.splice(1, 1, { "monthlyValues": month});
+	week.push(ending);
+	trades.splice(0, 1, { "weeklyValues": week })
+	
+	if(month.length == 30) {
+		month.shift();
 	}
+	month.push(ending)
+	trades.splice(1, 1, { "monthlyValues": month });
+
 	jsonfile.writeFile(app.getPath('userData') + '/trades.json', trades);
 	app.quit();
 });
