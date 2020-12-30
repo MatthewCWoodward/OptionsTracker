@@ -16,7 +16,7 @@ app.on('ready', () => {
 	})
 
 	win.loadFile('index.html')
-	// win.webContents.openDevTools()
+	win.webContents.openDevTools()
 	const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
 	Menu.setApplicationMenu(mainMenu);
 });
@@ -47,8 +47,9 @@ ipcMain.on('exitButton', (e, ending) => {
 	month.push(ending)
 	trades.splice(1, 1, { "monthlyValues": month });
 
-	jsonfile.writeFile(app.getPath('userData') + '/trades.json', trades);
-	app.quit();
+	jsonfile.writeFile(app.getPath('userData') + '/trades.json', trades, () => {
+		app.quit();
+	});
 });
 
 ipcMain.on('minimizeButton', () => {
